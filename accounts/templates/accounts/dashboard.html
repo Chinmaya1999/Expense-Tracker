@@ -1,0 +1,201 @@
+{%  extends 'accounts/main_template.html' %}
+
+
+
+
+{% block content %}
+<script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<style>
+
+	body{
+
+		background-color: #ffffff !important;
+	}
+
+	.super{
+
+		padding:20px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.myChart{
+		align-items: center;
+		justify-content: space-between;
+		width: 500px;
+		height: 500px;
+	}
+	.expend{
+  		right: -200px;
+		padding:20px;
+		width: 500px;
+		height: 500px;
+	}
+
+	input{
+		width: 100%;
+		padding: 12px 20px;
+		margin: 8px 0;
+		box-sizing: border-box;
+	}
+
+	input::placeholder {
+	  color: #d3d3d3;
+	}
+
+	.submit{
+		background-color: #6BA3E8;
+	}
+
+	.center-column{
+		width:600px;
+		margin: 20px auto;
+		padding:20px;
+		background-color: #fff;
+		border-radius: 3px;
+		box-shadow: 6px 2px 30px 0px rgba(0,0,0,0.75);
+	}
+
+	.item-row{
+		background-color: #906abd;
+		margin: 10px;
+		padding: 20px;
+		border-radius: 3px;
+		color: #fff;
+		font-size: 16px;
+		box-shadow: 0px -1px 10px -4px rgba(0,0,0,0.75);
+	}
+
+	.btn-danger{
+		background-color: #ffae19;
+		border-color: #e59400;
+	}
+	 .hello-msg{
+    font-size: 18px;
+    color: #fff;
+    margin-right: 20px;
+  }
+
+</style>
+
+	<br>
+
+<div class="row">
+	<div class="col">
+		<div class="col-md">
+			<div class="card text-center text-white  mb-3" id="total-orders">
+			  	<div class="card-header">
+			  		<h5 class="card-title">This Month's Expenditures</h5>
+			  	</div>
+			  	<div class="card-body">
+			    	<h3 class="card-title">₹{{ total }}</h3>
+			  	</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col">
+		<div class="col-md">
+			<div class="card text-center text-white  mb-3" id="orders-delivered">
+			  	<div class="card-header">
+			  		<h5 class="card-title">Budget</h5>
+			  	</div>
+			  	<div class="card-body">
+			    	<h3 class="card-title">{{ budget }}</h3>
+			  	</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col">
+		<div class="col-md">
+			<div class="card text-center text-white  mb-3" id="orders-pending">
+			  	<div class="card-header">
+			  		<h5 class="card-title">Income</h5>
+			  	</div>
+			  	<div class="card-body">
+			    	<h3 class="card-title">{{ income }}</h3>
+			  	</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="super">
+
+<div class="card">
+
+<div id="myChart" class="myChart"></div>
+
+</div>
+
+<div class="col-md-7">
+	<div class="card">
+		<h5>Expenditures Today</h5>
+	</div>
+		<hr>
+		<div class=" expend card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'addExpense' %}" >Add Expense</a>
+			<table class="table table-sm">
+				<tr>
+					<th>Expenditure Type</th>
+					<th>Amount</th>
+					<th>Date</th>
+				</tr>
+						{% for i in expenses %}
+						<tr>
+							<td>{{i.transaction_type}}</td>
+							<td>{{i.amount}}</td>
+							<td>{{i.date}}</td>
+						</tr>
+
+						{% endfor %}
+						
+				
+		
+			</table>
+		</div>
+	</div>
+</div>
+
+	<script>
+		
+		var chartData = {
+
+			"type":"bar",
+			"scale-x":{
+
+				"values":["A",
+								"B",
+								"C"]
+			},
+			"series":[
+			{
+				"values":[
+				25,
+				27
+				,28
+
+
+
+				]
+
+			}
+
+			]
+
+		}
+		zingchart.render({
+			id: "myChart",
+			data: chartData,
+		});
+
+	</script>
+
+{% endblock %}
+
