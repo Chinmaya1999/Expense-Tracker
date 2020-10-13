@@ -29,15 +29,18 @@ Expense Tracker manages income, expenditure, savings, investments and transactio
 5. Your server should be up and running now.
 
 
-
-
-
-
 If you have any question related to functioning of our projects then you can refer our videos. After watching this you will be able to know our project and motive of this project end to end.
 
 + [DEMO VIDEO](https://youtu.be/FIGZyWgiYI0)
 
 Click on above link to watch video
+
+
+## ABOUT DEPLOYMENT
+
+   The Server is also hosted at [PythonAnywhere](https://www.pythonanywhere.com/). Click on the below links to use it directly from the hosted server.
+   
+   + [HOME PAGE](http://expense.pythonanywhere.com/loginPage/?next=/)
 
 
 
